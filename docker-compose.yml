@@ -1,0 +1,39 @@
+version: '2'
+services:
+  memcached:
+    image: memcached
+    restart: unless-stopped
+  leprikon:
+    image: misli/ddmpelhrimov
+    environment:
+      DATABASE_ENGINE: django.db.backends.mysql
+      DATABASE_HOST: ''
+      DATABASE_NAME: ddmpelhrimov
+      DATABASE_PASSWORD: password-db
+      DATABASE_USER: ddmpelhrimov
+      UWSGI_MODULE: leprikon.site.wsgi:application
+      DEBUG: TEMPLATE
+      SECRET_KEY: XXX
+      MEMCACHED_LOCATION: memcached:11211
+    volumes:
+    - ./media:/app/htdocs/media:z
+    - ./data:/app/data:z
+    - ./menus:/app/menus:z
+    - ./ddmpelhrimov:/app/ddmpelhrimov:z
+    tty: true
+    volumes_from:
+    - mysql
+    ports:
+    - 127.0.0.1:8000:80
+    restart: unless-stopped
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: ddmpelhrimov
+      MYSQL_PASSWORD: password-db
+      MYSQL_ROOT_PASSWORD: password-db-root
+      MYSQL_USER: ddmpelhrimov
+    volumes:
+    - /var/run/mysqld
+    - ./mysql:/var/lib/mysql:z
+    restart: unless-stopped
