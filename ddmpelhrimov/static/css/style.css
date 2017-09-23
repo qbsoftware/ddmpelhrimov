@@ -67,23 +67,36 @@ body {
     vertical-align: top;
     position: absolute;
 }
-#menu a{
+#menu ul > a{
     display:inline-block;
     font-size: 1.8em;
-    margin: 0px 100px 5px 0px;
+    margin: 3px 0px;
     padding: 5px 15px;
     background-color: yellow;
     color: inherit;
     text-decoration: inherit;
     text-transform: uppercase;
 }
+#menu ul {
+    padding-left: 0px;
+}
 #menu .submenu{
-    padding-left: 15px;
+    padding-left: 0px;
+}
+.submenu a{
+    display:inline-block;
+    font-size: 1.5em;
+    margin: 1px 0px;
+    padding: 0px 15px;
+    background-color: yellow;
+    color: inherit;
+    text-decoration: inherit;
+    text-transform: uppercase;
 }
 #content{
     display: inline-block;
     width: 60%;
-    margin-top: 210px;
+    margin-top: 200px;
     margin-left: 25%;
     background-color: transparent;
 }
@@ -92,6 +105,21 @@ body {
     background-color: rgb(255,255,255);
     background-color: rgba(255,255,255,0.7);
 }
+.box {
+/*    vertical-align: top;*/
+}
+.box-header {
+    display: inline-block;
+    width: 18%;
+    text-align: center;
+    vertical-align: top;
+    padding: 10px;
+}
+.box-content, .event_description {
+    display: inline-block;
+    padding: 10px;
+}
+/*
 input, select{
     -moz-appearance: none;
     font-size: 1.2em;
@@ -101,8 +129,8 @@ input, select{
     background-color: yellow;
     color: inherit;
     border: inherit;
-    
 }
+*/
 #footer{
     color: rgb(100,179,230);
     display: block;
@@ -117,7 +145,11 @@ input, select{
 }
 h1{
     font-size: 3em;
-    margin: 40px 0px 0px 0px;
+    margin: 0px;
+    padding: 10px;
+}
+form {
+    padding: 10px;
 }
 h2{
     font-size: 2.5em;
@@ -125,7 +157,8 @@ h2{
 }
 h3{
     font-size: 1.5em;
-    margin: 0px;
+    margin: 5px 0px;
+    font-weight: bold;
 }
 lable{
     margin-left: 10px;
@@ -149,7 +182,6 @@ lable{
 #wrapper{
     padding: 20px;
 }
-td{
-    padding-top: 20px;
-    vertical-align: top;
+.event_description p{
+    margin: 5px 0px;
 }
