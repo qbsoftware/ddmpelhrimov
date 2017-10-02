@@ -15,6 +15,7 @@ INSTALLED_APPS = [
 ] + INSTALLED_APPS + [
     'haystack',
     'aldryn_search',
+    'aldryn_bootstrap3',
 ]
 
 #ROOT_URLCONF = 'ddmpelhrimov.urls'
