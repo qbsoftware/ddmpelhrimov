@@ -6,8 +6,8 @@
 
 {% block content %}
 
-<h1 class="replace">{% block h1 %}{% page_attribute "title" %}{% endblock %}</h1>
+<h1 class="title">{% block h1 %}{% page_attribute "title" %}{% endblock %}</h1>
 
-{% block page_content %}{% placeholder "content" %}{% endblock %}
+<div class="page_content">{% block page_content %}{% placeholder "content" %}{% endblock %}</div>
 
 {% endblock %}
