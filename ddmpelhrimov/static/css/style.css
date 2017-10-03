@@ -43,8 +43,6 @@ body {
 }
 #leftSide {
     vertical-align: top;
-    width: 20%;
-    min-width: 150px;
     height: 100%;
     position: fixed;
     display: inline-block;
@@ -60,12 +58,8 @@ body {
     
 }
 #menu{
-    display: inline-block;
-    width: 20%;
-    min-width: 150px;
     margin-top: 210px;
     vertical-align: top;
-    position: absolute;
 }
 #menu ul > a{
     display:inline-block;
@@ -94,10 +88,7 @@ body {
     text-transform: uppercase;
 }
 #content{
-    display: inline-block;
-    width: 60%;
     margin-top: 200px;
-    margin-left: 25%;
     background-color: transparent;
 }
 #content > *{

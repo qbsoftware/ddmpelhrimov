@@ -12,18 +12,12 @@
 </head>
 <body>
     {% cms_toolbar %}
-    <div id="leftSide"></div>
-    <div id="menu">
-        <ul>
-        {% show_menu 0 1 0 1 'menu.html' %}
-        </ul>
-    </div>
     <div id="header">
         <div id="header-left">
             <img src="{% static 'img/logo.png' %}" width="150px" style="display: block; margin: 0 auto">
             <h1>DDM Pelhřimov</h1>
         </div>
-        <img src="{% static 'img/domecek.png' %}" width="300px" style="float: right; margin: 20px">
+        <img src="{% static 'img/domecek.png' %}" width="300px" style="float: right; margin: 20px"  class="hidden-sm-down">
         <div id="header-right">
             {% school_year_form %}
             {% if request.user.is_authenticated %}
@@ -57,34 +51,42 @@
             {% endif %}
         </div>
     </div>
-    <div id="content">
-        {% if messages %}
-        <div class="modal fade" id="messages" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        {% for message in messages %}
-                        <div class="alert alert-{% if message.level_tag == 'error' %}danger{% else %}{{ message.level_tag }}{% endif %}" role="alert">
-                            <span class="glyphicon glyphicon-{% if message.level_tag == 'error' %}exclamation{% else %}{{ message.level_tag }}{% endif %}-sign" aria-hidden="true"></span>
-                            {{ message }}
+    <div id="leftSide" class="hidden-xs-down col-sm-3 col-md-2"></div>
+    <div class="row">
+        <div id="menu" class="col-xs-12 col-sm-4 col-md-3">
+            <ul>
+            {% show_menu 0 1 0 1 'menu.html' %}
+            </ul>
+        </div>
+        <div id="content" class="col-xs-10 col-xs-offset-1 col-sm-7 col-sm-offset-0 col-md-8">
+            {% if messages %}
+            <div class="modal fade" id="messages" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {% for message in messages %}
+                            <div class="alert alert-{% if message.level_tag == 'error' %}danger{% else %}{{ message.level_tag }}{% endif %}" role="alert">
+                                <span class="glyphicon glyphicon-{% if message.level_tag == 'error' %}exclamation{% else %}{{ message.level_tag }}{% endif %}-sign" aria-hidden="true"></span>
+                                {{ message }}
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">{% trans 'OK' %}</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">{% trans 'OK' %}</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <script type="text/javascript">
-            $('#messages').modal({
-                backdrop: 'static',
-            });
-        </script>
-        {% endif %}
-        {% block content %}{% endblock %}
-        <div id="footer">
-            designed by <a href="">Pechová L.</a> | powered by <a href="https://leprikon.cz/">Leprikon</a>
+            <script type="text/javascript">
+                $('#messages').modal({
+                    backdrop: 'static',
+                });
+            </script>
+            {% endif %}
+            {% block content %}{% endblock %}
+            <div id="footer">
+                designed by <a href="">Pechová L.</a> | powered by <a href="https://leprikon.cz/">Leprikon</a>
+            </div>
         </div>
     </div>
 </body>
