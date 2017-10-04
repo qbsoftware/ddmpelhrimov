@@ -18,17 +18,11 @@ body {
     background: url("../img/bubliny.png") repeat, linear-gradient(rgba(86,206,230,1),rgba(86,206,230,0.1) 40%,rgba(86,206,230,0.1) 70%,rgba(86,206,230,1) 100%) fixed;
 }
 #header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
     height: 200px;
     background-image: url(../img/head.png);
     background-size: 100% 200px;
 }
 #header-left {
-    display: inline-block;
-    width: 20%;
     min-width: 245px;
     float: left;
     padding-top: 10px;
@@ -57,7 +51,6 @@ body {
     
 }
 #menu{
-    margin-top: 210px;
     vertical-align: top;
 }
 #menu ul > a{
@@ -87,7 +80,6 @@ body {
     text-transform: uppercase;
 }
 #content{
-    margin-top: 200px;
     background-color: transparent;
 }
 #content > *{
