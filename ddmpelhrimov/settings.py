@@ -12,15 +12,14 @@ from leprikon.site.settings import *
 # Application definition
 INSTALLED_APPS = [
     'ddmpelhrimov',
+    'cms_articles',
 ] + INSTALLED_APPS + [
     'haystack',
     'aldryn_search',
     'aldryn_bootstrap3',
 ]
 
-#ROOT_URLCONF = 'ddmpelhrimov.urls'
-
-#WSGI_APPLICATION = 'ddmpelhrimov.wsgi.application'
+TEMPLATES[0]['OPTIONS']['context_processors'].append('cms_articles.context_processors.cms_articles')
 
 CMS_TEMPLATES = [
     ('default.html', 'Výchozí'),
