@@ -4,7 +4,6 @@
 }
 body {
     font-family: Akrobat-regular;
-    width: 100%;
     vertical-align: top;
     margin: 0 auto;
     background: rgba(86,206,230,0.5) url("../img/bubliny.png") repeat; /* For browsers that do not support gradients */
@@ -24,15 +23,10 @@ body {
 }
 #header-left {
     min-width: 245px;
-    float: left;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 #header-right {
-    display: inline-block;
-    width: 20%;
-    min-width: 245px;
-    float: right;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 #leftSide {
     vertical-align: top;
@@ -48,12 +42,13 @@ body {
     background: -moz-linear-gradient(rgba(0,179,230,0),rgba(0,179,230,1));
   /* Standard syntax */
     background: linear-gradient(rgba(0,179,230,0) 20%,rgba(0,179,230,1));
-    
 }
 #menu{
+    position: absolute;
+    margin-top: 200px;
     vertical-align: top;
 }
-#menu ul > a{
+#menu > a{
     display:inline-block;
     font-size: 1.8em;
     margin: 3px 0px;
@@ -63,11 +58,8 @@ body {
     text-decoration: inherit;
     text-transform: uppercase;
 }
-#menu ul {
-    padding-left: 0px;
-}
 #menu .submenu{
-    padding-left: 0px;
+    padding-left: 15px;
 }
 .submenu a{
     display:inline-block;
@@ -88,9 +80,6 @@ body {
     background-color: rgba(255,255,255,0.7);
     padding: 10px;
 }
-.box {
-/*    vertical-align: top;*/
-}
 .box-header {
     display: inline-block;
     width: 18%;
@@ -102,18 +91,6 @@ body {
     display: inline-block;
     padding: 10px;
 }
-/*
-input, select{
-    -moz-appearance: none;
-    font-size: 1.2em;
-    display:inline-block;
-    margin: 5px;
-    padding: 5px 5px;
-    background-color: yellow;
-    color: inherit;
-    border: inherit;
-}
-*/
 #footer{
     color: rgb(100,179,230);
     display: block;
@@ -167,4 +144,27 @@ lable{
 }
 .event_description p{
     margin: 5px 0px;
+}
+#responsiveMenuIcon{
+    display: none !important;
+}
+@media screen and (max-width: 767px) {
+  #responsiveMenuIcon{
+    display: inline-block !important;
+  }
+  #menu a:not(#responsiveMenuIcon){
+    display: none;
+  }
+  #menu.responsive a{
+    display: inline-block !important;
+  }
+  #content{
+    margin-top: 35px;
+  }
+  #menu{
+    margin-top: 170px;
+  }
+  #menu.responsive{
+    z-index: 100;
+  }
 }

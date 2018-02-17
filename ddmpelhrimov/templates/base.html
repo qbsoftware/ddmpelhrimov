@@ -18,15 +18,15 @@
 </head>
 <body>
     {% cms_toolbar %}
-    <div id="leftSide" class="visible-sm visible-md visible-lg col-sm-3 col-md-2"></div>
-    <div class="row">
+    <div id="leftSide" class="col-xs-6 visible-sm visible-md visible-lg col-sm-3 col-md-2"></div>
+    <div class="row" style="margin-right:0px !important;">
     <div id="header" class="col-xs-12">
         <div id="header-left" class="col-xs-6 col-sm-4 col-md-3">
             <img src="{% static 'img/logo.png' %}" width="150px" style="display: block; margin: 0 auto">
             <h1>DDM Pelhřimov</h1>
         </div>
-        <img src="{% static 'img/domecek.png' %}" width="300px" style="float: right; margin: 20px"  class="visible-sm visible-md visible-lg">
-        <div id="header-right">
+        <img src="{% static 'img/domecek.png' %}" width="300px" style="position: fixed; top:20px; right:20px;"  class="visible-sm visible-md visible-lg">
+        <div id="header-right" class="col-xs-6 col-sm-offset-2 col-md-offset-3">
             {% school_year_form %}
             {% if request.user.is_authenticated %}
             <div class="dropdown">
@@ -63,12 +63,11 @@
             {% endif %}
         </div>
     </div>
-        <div id="menu" class="col-xs-12 col-sm-4 col-md-3">
-            <ul>
+        <div id="menu" class="col-xs-12">
+            <a href="JavaScript:void(0);" id="responsiveMenuIcon" onclick="$('#menu').toggleClass('responsive');$('#leftSide').toggleClass('visible-sm visible-md visible-lg')">MENU &#8801;</a></br>
             {% show_menu 0 100 0 1 'menu.html' %}
-            </ul>
         </div>
-        <div id="content" class="col-xs-10 col-xs-offset-1 col-sm-7 col-sm-offset-0 col-md-8">
+        <div id="content" class="col-xs-10 col-xs-offset-1 col-sm-7 col-sm-offset-4 col-md-8 col-md-offset-3">
             {% if messages %}
             <div class="modal fade" id="messages" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
@@ -95,15 +94,38 @@
             {% endif %}
             {% block content %}{% endblock %}
             <div id="footer">
-                designed by <a href="">Pechová L.</a> | powered by <a href="https://leprikon.cz/">Leprikon</a>
+                powered by <a href="https://leprikon.cz/">Leprikon</a>
             </div>
         </div>
     </div>
 </body>
+
+<script>
+$(function(){
+  var $menuTopLlevelLinks = $('#menu a').not('.submenu a, #responsiveMenuIcon');
+  var n = $menuTopLlevelLinks.length;
+  var startGreen = 250;
+  var endGreen = 120;
+  var deltaGreen = Math.round((startGreen-endGreen)/(n-1));
+  $menuTopLlevelLinks.each(function(index){
+    $(this).css('background-color', 'rgb(250,' + (startGreen-index*deltaGreen) + ',30)');
+  });
+  $('.submenu a').css('background-color', $('#menu .ancestor').not('.submenu a').css('background-color'));
+  $('#responsiveMenuIcon').focusout(function(){
+      $('#menu').removeClass('responsive');
+      $('#leftSide').addClass('visible-sm visible-md visible-lg')
+  });
+  $('#menu a').not('#responsiveMenuIcon').mousedown(function(event){
+    $target = $(event.target)[0];
+    $target.click();
+  })
+})
+</script>
+
 <script type="text/javascript" src="{% static 'leprikon/lib/bootstrap/js/bootstrap.min.js' %}"></script>
 
 {% render_block "js" %}
- 
+
 {% livechat %}
 
 </html>
