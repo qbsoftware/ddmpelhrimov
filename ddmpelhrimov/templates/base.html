@@ -110,7 +110,7 @@ $(function(){
   $menuTopLlevelLinks.each(function(index){
     $(this).css('background-color', 'rgb(250,' + (startGreen-index*deltaGreen) + ',30)');
   });
-  $('.submenu a').css('background-color', $('#menu .ancestor').not('.submenu a').css('background-color'));
+  $('.submenu a').css('background-color', $('#menu .selected').not('.submenu a').css('background-color'));
   $('#responsiveMenuIcon').focusout(function(){
       $('#menu').removeClass('responsive');
       $('#leftSide').addClass('visible-sm visible-md visible-lg')
