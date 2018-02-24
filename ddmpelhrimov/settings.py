@@ -19,8 +19,6 @@ INSTALLED_APPS = [
     'aldryn_bootstrap3',
 ]
 
-TEMPLATES[0]['OPTIONS']['context_processors'].append('cms_articles.context_processors.cms_articles')
-
 CMS_TEMPLATES = [
     ('default.html', 'Výchozí'),
 ]
