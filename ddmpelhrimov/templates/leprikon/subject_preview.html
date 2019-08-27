@@ -2,14 +2,14 @@
 
 <div class="box box-{{ object.subject_type.subject_type }} box-{{ object.subject_type.slug }}">
     <div class="box-header">
-        <h3>{{ object.name }}</h3>
+        <h3>{{ object.display_name }}</h3>
         {% for group in object.all_groups %}
         <small class="tag" style="color: {{ group.font_color }}; border-color: {{ group.font_color }}; background-color: {{ group.color }}">
             {{ group.name }}
         </small>
         {% endfor %}
         {% if object.price %}
-        <small>{{ object.price | currency }}{% if object.unit %} / {{ object.unit }}{% endif %}</small>
+        <small>{{ object.price | currency }}{% if object.school_year_division.period_name %} / {{ object.school_year_division.period_name }}{% endif %}</small>
         {% endif %}
         {% if request.user.is_staff or request.leader in object.all_leaders %}
         <a class="btn btn-primary btn-xs" href="{% url_with_back 'leprikon:subject_update' object.subject_type.slug object.id %}">
@@ -53,6 +53,11 @@
 
         {{ object.description | safe }}
 
+        <p>
+            {% blocktrans count counter=object.all_age_groups|length %}Věková skupina{% plural %}Věkové skupiny{% endblocktrans %}:
+            {{ object.all_age_groups|comma_separated }}
+        </p>
+
         {% if object.all_leaders %}
         <p>
             {% blocktrans count counter=object.all_leaders|length %}Led by{% plural %}Led by{% endblocktrans %}
@@ -89,15 +94,13 @@
                 {% trans 'registrations' %}
                 ({{ object.approved_registrations_count }}{% if object.unapproved_registrations_count %} + {{ object.unapproved_registrations_count }}{% endif %})
             </a>
-            {% if object.all_periods %}{# course #}
-            <a class="btn btn-sm btn-default" href="{% url_with_back 'leprikon:course_journal' object.id %}">
+            <a class="btn btn-sm btn-default" href="{% url_with_back 'leprikon:journal' object.id %}">
                 {% trans 'journal' %}
             </a>
-            <a class="btn btn-sm btn-primary" href="{% url_with_back 'leprikon:coursejournalentry_create' object.id %}">
+            <a class="btn btn-sm btn-primary" href="{% url_with_back 'leprikon:journalentry_create' object.id %}">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 {% trans 'add journal entry' %}
             </a>
-            {% endif %}
         </div>
         {% endif %}
     </div>
