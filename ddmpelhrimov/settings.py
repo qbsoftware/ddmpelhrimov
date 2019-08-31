@@ -14,7 +14,6 @@ INSTALLED_APPS = [
     'ddmpelhrimov',
     'cms_articles',
 ] + INSTALLED_APPS + [
-    'haystack',
     'aldryn_search',
     'aldryn_bootstrap3',
 ]
