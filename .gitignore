@@ -2,10 +2,9 @@
 *.pyo
 *.swp
 *~
-/.ipython
-/data
-/docker-compose.*.yml
-/env
-/htdocs
-/media
+/.ipython/
+/data/
+/dkim/
+/docker-compose.override.yml
+/media/
 /mysql*

@@ -2,48 +2,56 @@ version: '3.4'
 services:
 
   leprikon:
-    image: misli/ddmpelhrimov:testing
+    image: misli/ddmpelhrimov
+    build: .
     depends_on:
-      - db
       - memcached
+      - mysql
+      - smtp
     environment:
-      DEBUG: TEMPLATE
-      SECRET_KEY: secretkey
       DATABASE_ENGINE: django.db.backends.mysql
       DATABASE_HOST: ''
       DATABASE_NAME: ddmpelhrimov
-      DATABASE_PASSWORD: password-db
+      DATABASE_PASSWORD: dbpassword
       DATABASE_USER: ddmpelhrimov
+      EMAIL_HOST: smtp
+      EMAIL_HOST_PASSWORD: emailpassword
+      EMAIL_HOST_USER: ddmpelhrimov
+      EMAIL_SUBJECT_PREFIX: '[DDM Pelhřimov]'
       MEMCACHED_LOCATION: memcached:11211
+      SECRET_KEY: secretkey
+      SERVER_EMAIL: DDM Pelhřimov <leprikon@ddmpelhrimov.cz>
     ports:
-      - 127.0.0.1:80:80
-    restart: unless-stopped
+      - 127.0.0.1:10030:80
     volumes:
-      - ./.ipython:/root/.ipython:z
-      - ./ddmpelhrimov:/app/ddmpelhrimov:z
-      - ./data:/app/data:z
-      - ./media:/app/htdocs/media:z
-      - db:/var/run/mysqld:z
-
-  db:
-    image: mariadb
-    environment:
-      MYSQL_DATABASE: ddmpelhrimov
-      MYSQL_PASSWORD: password-db
-      MYSQL_ROOT_PASSWORD: password-db-root
-      MYSQL_USER: ddmpelhrimov
-    ports:
-      - 127.0.0.1:3306:3306
-    restart: unless-stopped
-    volumes:
-      - db:/var/run/mysqld:z
-      - ./mysql:/var/lib/mysql:z
+      - ./.ipython:/root/.ipython
+      - ./data:/app/data
+      - ./media:/app/htdocs/media
+      - mysql:/var/run/mysqld
 
   memcached:
     image: memcached
-    ports:
-      - 127.0.0.1:11211:11211
-    restart: unless-stopped
+
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: ddmpelhrimov
+      MYSQL_PASSWORD: dbpassword
+      MYSQL_ROOT_PASSWORD: rootdbpassword
+      MYSQL_USER: ddmpelhrimov
+    volumes:
+      - mysql:/var/run/mysqld
+      - ./mysql:/var/lib/mysql
+
+  smtp:
+    image: catatnight/postfix
+    environment:
+      maildomain: ddmpelhrimov.cz
+      smtp_user: ddmpelhrimov:emailpassword
+    stdin_open: true
+    volumes:
+    - ./dkim:/etc/opendkim/domainkeys
+    tty: true
 
 volumes:
-  db:
+  mysql:
