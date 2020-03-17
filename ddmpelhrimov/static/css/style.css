@@ -148,6 +148,25 @@ lable{
 #responsiveMenuIcon{
     display: none !important;
 }
+#id_school_year_form {
+    display: inline-block;
+    padding: 0;
+}
+#chat-modal .box-header {
+    background: #fff;
+    border: 2px solid black;
+    border-bottom: none;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    width: auto;
+}
+
+/* do not show radio inputs in multiselect */
+.radio input {
+    visibility: hidden;
+}
+
 @media screen and (max-width: 767px) {
   #responsiveMenuIcon{
     display: inline-block !important;

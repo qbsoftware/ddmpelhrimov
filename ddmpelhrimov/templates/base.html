@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %} &mdash; Dům dětí a mládeže Pelhřimmov</title>
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'leprikon/lib/bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'leprikon/css/chat.css' %}"/>
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style.css' %}" />
     {% render_block "css" %}
     <script src="{% static 'leprikon/lib/jquery.min.js' %}"></script>
@@ -29,6 +30,7 @@
         <div id="header-right" class="col-xs-6 col-sm-offset-2 col-md-offset-3">
             {% school_year_form %}
             {% include 'leprikon/user_dropdown.html' %}
+            {% chat %}
         </div>
     </div>
         <div id="menu" class="col-xs-12">
