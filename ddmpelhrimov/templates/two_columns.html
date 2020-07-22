@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock %}
+{% block meta_description %}{% page_attribute "meta_description" %}{% endblock %}
+
+{% block content %}
+
+<h1 class="title">{% block h1 %}{% page_attribute "title" %}{% endblock %}</h1>
+
+<div class="row">
+    <div class="page_content col-sm-9">
+        <div>{% block page_content %}{% placeholder "content" %}{% endblock %}</div>
+    </div>
+    <div class="right_column col-sm-3">
+        <div>{% block right_column %}{% placeholder "right_column" %}{% endblock %}</div>
+    </div>
+</div>
+
+{% endblock %}

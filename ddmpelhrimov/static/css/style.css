@@ -74,11 +74,15 @@ body {
 #content{
     background-color: transparent;
 }
-#content > *{
+#content > *,
+#content > .row > div > *{
     margin-bottom: 10px;
     background-color: rgb(255,255,255);
     background-color: rgba(255,255,255,0.7);
     padding: 10px;
+}
+#content > .row {
+    background-color: transparent;
 }
 .box-header {
     display: inline-block;
@@ -160,6 +164,14 @@ lable{
     padding: 5px;
     text-align: center;
     width: auto;
+}
+
+.right_column ul {
+    list-style: none;
+}
+
+.right_column ul a {
+    font-size: 1.8em;
 }
 
 /* do not show radio inputs in multiselect */

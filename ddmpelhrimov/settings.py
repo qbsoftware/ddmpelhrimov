@@ -20,6 +20,7 @@ INSTALLED_APPS = [
 
 CMS_TEMPLATES = [
     ('default.html', 'Výchozí'),
+    ('two_columns.html', 'Dva sloupce'),
 ]
 
 # templates used to render plugin article
@@ -30,6 +31,7 @@ CMS_ARTICLES_PLUGIN_ARTICLE_TEMPLATES = [
 # templates used to render plugin articles
 CMS_ARTICLES_PLUGIN_ARTICLES_TEMPLATES = [
     ('default', 'Výchozí'),
+    ('menu', 'Menu'),
 ]
 
 CMS_PLACEHOLDER_CONF = {
