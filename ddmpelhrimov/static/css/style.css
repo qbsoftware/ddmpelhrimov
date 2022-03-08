@@ -95,6 +95,9 @@ body {
     display: inline-block;
     padding: 10px;
 }
+.tag {
+    padding: 5px;
+}
 #footer{
     color: rgb(100,179,230);
     display: block;
