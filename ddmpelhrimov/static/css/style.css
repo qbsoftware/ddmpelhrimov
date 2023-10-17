@@ -93,6 +93,7 @@ body {
 }
 .box-content, .event_description {
     display: inline-block;
+    width: 80%;
     padding: 10px;
 }
 .tag {
