@@ -84,6 +84,13 @@ body {
 #content > .row {
     background-color: transparent;
 }
+#content > .btn-primary {
+    background-color: #337ab7;
+}
+#content > .btn-default {
+    background-color: #fff;
+}
+
 .box-header {
     display: inline-block;
     width: 18%;
