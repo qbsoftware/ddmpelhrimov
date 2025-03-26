@@ -1,12 +1,12 @@
-version: '3.4'
 
 x-leprikon: &leprikon
-  image: misli/ddmpelhrimov
+  image: qbsoftware/ddmpelhrimov
   depends_on:
     - mysql
     - redis
     - smtprelay
   environment:
+    LEPRIKON_DOMAIN: www.ddmpelhrimov.cz
     DATABASE_ENGINE: django.db.backends.mysql
     DATABASE_HOST: ''
     DATABASE_NAME: ddmpelhrimov
