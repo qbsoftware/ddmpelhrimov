@@ -1,4 +1,4 @@
-ARG LEPRIKON_TAG=latest
+ARG LEPRIKON_TAG=3.11
 FROM leprikon/leprikon:$LEPRIKON_TAG
 
 LABEL maintainer="Jakub Dorňák <jakub.dornak@qbsoftware.cz>"
